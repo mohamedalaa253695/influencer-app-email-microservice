@@ -7,14 +7,12 @@ services:
         environment:
             DB_HOST: db
             DB_DATABASE: emails
-            # DB_USERNAME: root
             DB_PASSWORD: root
-            # MAIL_HOST: docker.for.mac.localhost
         command: "php artisan queue:work"
+        restart: unless-stopped
         depends_on:
             - db
-        ports:
-            - 5673:5672
+       
 
     db:
         image: mysql:5.7.22

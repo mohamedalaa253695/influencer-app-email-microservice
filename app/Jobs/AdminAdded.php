@@ -17,7 +17,7 @@ class AdminAdded implements ShouldQueue
      *
      * @return void
      */
-    public $email ;
+    private $email ;
 
     public function __construct($email)
     {
@@ -32,7 +32,7 @@ class AdminAdded implements ShouldQueue
     public function handle()
     {
         // echo 'Admin email is ' . $this->email . PHP_EOL;
-        // dd($this->email);
+        print($this->email);
         Mail::send('admin.AdminAdded', [], function ($message) {
             $message->to($this->email);
             $message->subject('You have been added to the Admin App!');
